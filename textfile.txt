@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amrit ❤️ Usha</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ff4d6d;
+  --dark:#0f172a;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:radial-gradient(circle at top,#ffdde1,#ee9ca7);
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:var(--pink);
+  transform:rotate(45deg);
+  animation:float 8s linear infinite;
+  opacity:.7;
+}
+.heart::before,.heart::after{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:var(--pink);
+  border-radius:50%;
+}
+.heart::before{top:-10px;left:0}
+.heart::after{left:-10px;top:0}
+
+@keyframes float{
+  0%{bottom:-10%;transform:translateX(0) rotate(45deg)}
+  100%{bottom:110%;transform:translateX(-60px) rotate(45deg)}
+}
+
+/* Card */
+.card{
+  background:rgba(0,0,0,.35);
+  backdrop-filter:blur(12px);
+  border-radius:24px;
+  padding:40px 30px;
+  max-width:360px;
+  text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);
+  animation:pop 1.2s ease forwards;
+}
+
+@keyframes pop{
+  from{transform:scale(.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+.title{
+  font-family:"Great Vibes",cursive;
+  font-size:42px;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  font-size:14px;
+  opacity:.85;
+  margin-bottom:25px;
+}
+
+.message{
+  min-height:90px;
+  font-size:16px;
+  line-height:1.6;
+}
+
+button{
+  margin-top:25px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff4d6d,#ff758f);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{
+  transform:scale(1.05);
+}
+
+/* Proposal reveal */
+.proposal{
+  display:none;
+  margin-top:20px;
+  animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.proposal h2{
+  font-family:"Great Vibes",cursive;
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.proposal p{
+  font-size:14px;
+  opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDuration=6+Math.random()*6+"s";
+  h.style.opacity=Math.random();
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="card">
+  <div class="title">Amrit ❤️ Usha</div>
+  <div class="subtitle">A special day. A special question.</div>
+
+  <div class="message" id="typeText"></div>
+
+  <button onclick="showProposal()">Tap to Continue 🌹</button>
+
+  <div class="proposal" id="proposal">
+    <h2>Will You Be Mine?</h2>
+    <p>
+      From today, from this moment,  
+      I want every tomorrow with you.  
+      Will you be my forever, Usha? 💍❤️
+    </p>
+  </div>
+</div>
+
+<script>
+const text = "Usha, from the first smile to every heartbeat, you became my favorite story. Today I don’t want to just say it… I want to ask you something special.";
+let i=0;
+function typeEffect(){
+  if(i<text.length){
+    document.getElementById("typeText").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(typeEffect,40);
+  }
+}
+typeEffect();
+
+function showProposal(){
+  document.getElementById("proposal").style.display="block";
+}
+</script>
+
+</body>
+</html>
